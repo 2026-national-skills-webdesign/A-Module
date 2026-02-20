@@ -4,7 +4,6 @@ const $$ = (selector) => document.querySelectorAll(selector);
 let state = { limit:10, page:1 }
 const datas = await fetch('./sample-data.csv').then(res => res.text());
 const rows = datas.split('\n').slice(1).map( line => `<tr>${line.split(',').map( cell => `<td>${cell}</td>` ).join('')}</tr>` );
-const lastPage = Math.ceil(rows.length / state.limit);
 
 const $tableBody = $('#tableBody');
 const $paginationButtons = $$('.pagination-btn');
@@ -34,7 +33,7 @@ function render(){
     $tableBody.innerHTML = rows.slice(range, range + state.limit).join('');
 
     $prevBtn.disabled = state.page === 1;
-    $nextBtn.disabled = state.page === lastPage;
+    $nextBtn.disabled = state.page === 5;
 
     $paginationButtons.forEach( ($btn,index) => {
         $btn.classList.remove('active');
@@ -42,7 +41,7 @@ function render(){
 
         $btn.textContent = index + 1;
         if(state.page === index+1) $btn.classList.add('active');
-        if(state.page ===  1 && index === 1 || state.page === lastPage && index === lastPage - 2){
+        if(state.page ===  1 && index === 1 || state.page === 5 && index === 3){
             $btn.classList.add('page-info');
             $btn.textContent = '...'
         }

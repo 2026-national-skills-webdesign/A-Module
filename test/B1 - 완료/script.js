@@ -12,5 +12,5 @@ const getPsw = pw => {
     "red"
 }
 input.addEventListener("input", (event) => {
-  getPsw(event.target.value)
+  getPsw(input.value)
 })
