@@ -1,57 +1,35 @@
-const cvs = document.getElementById('cvs');
-const ctx = cvs.getContext('2d');
-const lbl = document.getElementById('lbl');
-const val = document.getElementById('val');
-const leg = document.getElementById('leg');
-const addBtn = document.getElementById('addBtn');
-const clearBtn = document.getElementById('clearBtn');
-
+const [canvas, legend, lbl, val] = ["#canvas", ".legend", "#labelInput", "#valueInput"].map($);
+const ctx = canvas.getContext("2d");
 let data = [];
 
-const randColor = () => `hsl(${Math.random() * 360}, 70%, 60%)`;
+$("button").onclick = () => {
+  if (!lbl.value || val.value <= 0) return;
+  data.push({ k: lbl.value, v: +val.value, c: `hsl(${Math.random() * 360}, 70%, 60%)` });
+  [lbl.value, val.value] = ["", ""];
+  render();
+};
 
-function draw() {
-  ctx.clearRect(0, 0, cvs.width, cvs.height);
-  leg.innerHTML = '';
-
-  if (data.length === 0) return;
-
-  const total = data.reduce((s, d) => s + d.v, 0);
+function render() {
+  const total = data.reduce((s, e) => s + e.v, 0);
   let start = -Math.PI / 2;
-  const c = cvs.width / 2;
+  legend.innerHTML = "";
+  ctx.clearRect(0, 0, 500, 500);
 
-  data.forEach(d => {
-    const angle = (d.v / total) * 2 * Math.PI;
-    const percent = Math.round((d.v / total) * 100);
-
+  data.forEach(({k, v, c}) => {
+    const angle = (v / total) * Math.PI * 2;
+    
     ctx.beginPath();
-    ctx.moveTo(c, c);
-    ctx.arc(c, c, c - 20, start, start + angle);
-    ctx.fillStyle = d.color;
+    ctx.moveTo(250, 250);
+    ctx.arc(250, 250, 150, start, start + angle);
+    ctx.fillStyle = c;
     ctx.fill();
-    start += angle;
 
-    leg.innerHTML += `
+    legend.innerHTML += `
       <div class="legend-item">
-          <div class="legend-color" style="background:${d.color}"></div>
-          <span>${d.l} (${percent}%)</span>
+        <div class="legend-color" style="background:${c}"></div>
+        <span>${k} (${(v / total * 100).toFixed(1)}%)</span>
       </div>`;
+    
+    start += angle;
   });
 }
-
-function add() {
-  if (!lbl.value || !val.value || val.value <= 0) return alert("올바른 항목과 값을 입력하세요.");
-  data.push({ l: lbl.value, v: +val.value, color: randColor() });
-  lbl.value = val.value = '';
-  lbl.focus();
-  draw();
-}
-
-function clearAll() {
-  data = [];
-  draw();
-}
-
-addBtn.addEventListener('click', add);
-clearBtn.addEventListener('click', clearAll);
-val.addEventListener('keypress', e => { if (e.key === 'Enter') add(); });

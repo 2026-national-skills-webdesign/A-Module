@@ -1,0 +1,1 @@
+setInterval(() => time.innerHTML = new Date().toLocaleTimeString().slice(2), 10)

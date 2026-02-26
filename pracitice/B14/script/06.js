@@ -1,4 +1,4 @@
-const canvas = $("canvas")
+const canvas = $("#canvas")
 const legend = $(".legend")
 const lbl = $("#labelInput")
 const val = $("#valueInput")
@@ -7,7 +7,7 @@ let data = []
 
 $("button").onclick = () => {
   if(!lbl.value || val.value <= 0) return
-  data.push({ v: val.value, l: lbl.value, h: `hsl(${Math.random() * 360}, 70%, 60%)`})
+  data.push({ l: lbl.value, v: +val.value, h: `hsl(${Math.random() * 360}, 70%, 60%)` })
   [lbl.value, val.value] = ["", ""]
   render()
 }
@@ -28,10 +28,10 @@ function render() {
     ctx.fill()
 
     legend.innerHTML += `
-     <div class="legend-item">
-      <div class="legend-color" style="background: ${h}"></div>
-      <span>${l} (${((v / total) * 100).toFixed(1)}%)</span>
-    </div>   
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: ${h}"></div>
+        <span>${l} (${((v / total) * 100).toFixed(1)}%)</span>
+      </div>
     `
     start += angle
   })

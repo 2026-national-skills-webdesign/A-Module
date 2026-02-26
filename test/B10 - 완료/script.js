@@ -29,8 +29,7 @@ saveBtn.addEventListener("click", () => {
   a.click()
 })
 clearBtn.addEventListener("click", () => {
-  ctx.fillStyle = 'white'
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
 })
 canvas.addEventListener("mousemove", onMouseMove); // 마우스 움직일 때
 canvas.addEventListener("mousedown", startPainting); // 마우스 누를 때
