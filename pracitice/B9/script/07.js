@@ -1,30 +1,29 @@
 class star {
   constructor() {
-    this.datas = JSON.parse(localStorage.getItem("star")) ?? this.getData()
+    this.datas = JSON.parse(localStorage.getItem("star")) || this.getData()
     this.render()
   }
-  update() {
+  update(newData) {
+    this.datas = newData
     this.render()
     localStorage.setItem("star", JSON.stringify(this.datas))
   }
   render() {
-    container.innerHTML = ""
-    
+    container.innerHTML = ''
     this.datas.map(e => {
       const newDiv = newEl("div", {
-        innerHTML: `<h1>${e.name}</h1><p>${e.desc}</p><div class="star">${e.isStar ? "채운 별" : "빈 별"}</div>`
+        innerHTML: `${e.name} <p>${e.desc}</p><div class="star">${e.isStar ? "채운별" : "빈별"}</div>`
       })
       newDiv.querySelector(".star").addEventListener("click", () => {
         e.isStar = !e.isStar
-        this.update()
+        this.update(this.datas)
       })
       container.append(newDiv)
     })
   }
   async getData() {
     const data = await fetch("./data.json").then(res => res.json())
-    this.update()
-    
+    this.update(data)
   }
 }
 

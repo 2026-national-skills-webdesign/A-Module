@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>B11</title>
-  <link rel="stylesheet" href="../lib/lib.css">
-  <style>
-    .hidden {display: none;}
-  </style>
 </head>
-<body class="center">
-  <div id="time">00:00:000</div>
-  <div>
-    <button id="start">시작</button>
-    <button id="stop" class="hidden">중지</button>
-    <button id="resume" class="hidden">계속</button>
-    <button id="reset" class="hidden">초기화</button>
+
+<body>
+  <div id="box" style="display: flex;">
+    <div class="minutes">00</div>:
+    <div class="second">00</div>:
+    <div class="mili">000</div>
+  </div>
+  <div class="container">
+    <button onclick="render()">시작</button>
   </div>
 
+  <button onclick="location.reload()">초기화</button>
+
+  <script src="../lib/lib.js"></script>
+  <script src="./script/srcipt.js"></script>
 </body>
-<script src="../lib/lib.js"></script>
-<script src="./script/09.js"></script>
+
 </html>
