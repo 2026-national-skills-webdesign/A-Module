@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A11</title>
+  <link rel="stylesheet" href="../lib/lib.css">
+  <style>
+    header {display: flex;justify-content: center;align-items: center;width: 100vw;height: 80px;background-color: antiquewhite;}
+    header ul {display: flex;gap: 30px;}
+    label {display: none;}
+    
+    @media (max-width: 768px) {
+      ul {display: none !important;flex-direction: column;position: absolute;top: 80px;background-color: antiquewhite;width: 300px;text-align: center;}
+      label {display: block;}
+      #ham:checked ~ ul {display: flex !important;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <input type="checkbox" id="ham" hidden>
+    <ul>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </ul>
+    <label for="ham">햄버거</label>
+  </header>
+</body>
+
+</html>
