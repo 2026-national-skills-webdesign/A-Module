@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input{outline: none;}
+  </style>
+</head>
+<body>
+  <input type="text" name="" id="inp">
+</body>
+<script>
+  const getpsw = pw => {
+    const l = pw.length
+    const a = /[A-Z]/.test(pw)
+    const n = /[0-9]/.test(pw)
+    const t = /[!@#$%^&*]/.test(pw)
+
+    inp.style.borderColor = 
+    !l ? "black" : (l >= 8 && a && n && t) ? "green" : (l >=6 && (a||n)) ? "yellow" : "red"
+  }
+  inp.addEventListener("input", () => {
+    getpsw(inp.value)
+  })
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    .ul1 {display: grid;grid-template-columns: repeat(4, 1fr);}
+    @media (max-width: 1024px) and (min-width: 768px) {
+      .ul1 {grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 768px) {
+      .ul1 {grid-template-columns: repeat(1, 1fr);}
+    }
+  </style>
+</head>
+<body>
+  <ul class="ul1">
+    <img src="./card1.jpg">
+    <img src="./card2.jpg">
+    <img src="./card3.jpg">
+    <img src="./card4.jpg">
+  </ul>
+</body>
+</html>

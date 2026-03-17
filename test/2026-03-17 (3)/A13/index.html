@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body:has(#clo:checked) .modal {
+      display: none;
+    }
+    body:has(#log:checked ) .modal {display: flex;}
+    .modal{background-color: white;border: 1px solid black; display: none;flex-direction: column;gap: 30px; width: 1000px;height: 800px;position: absolute;justify-content: center;align-items: center;top: 10%;left: 30%;}
+  </style>
+  <link rel="stylesheet" href="../lib/lib.css">
+</head>
+
+<body class="center">
+  <input type="radio" name="r" id="log" hidden>
+  <input type="radio" name="r" id="clo" hidden>
+  <label for="log">로그인</label>
+  <div class="modal">
+    <label for="clo">X</label>
+    <h3>계정 로그인</h3>
+    <p>
+      안전한 서비스를 위해 로그인이 필요합니다. <br>
+
+      계속하려면 아래에 등록된 이메일과 비밀번호를 입력해주세요
+    <div class="br"></div>
+
+    로그인 계속</p>
+  </div>
+</body>
+
+</html>
