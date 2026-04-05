@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" maxlength="1">
+  <input type="text" maxlength="1">
+  <input type="text" maxlength="1">
+  <input type="text" maxlength="1">
+  <input type="text" maxlength="1">
+  <input type="text" maxlength="1">
+  <button style="display: none;" id="btn">전송하기</button>
+</body>
+<script src="../lib/lib.js"></script>
+<script>
+  const inputs = $$("input")
+  inputs.forEach((input, i)=> {
+    input.addEventListener("keydown", (e) => {
+      if(e.key === "Backspace") {
+        if(input.value === "") {
+          inputs[i - 1]?.focus()
+        }
+      }
+    })
+    input.addEventListener("input",(e) => {
+      input.value = input.value.replace(/[^0-9]/g, "")
+      if(input.value.length === 1) {
+        inputs[i + 1]?.focus()
+      }
+    btn.style.display = inputs.every(i => i.value.length > 0) ? "block" : "none"
+    })
+  })
+</script>
+</html>

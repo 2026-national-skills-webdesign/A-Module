@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../lib/lib.css">
+  <style>
+    canvas {border: 1px solid black;}
+  </style>
+</head>
+<body class="center">
+  <canvas width="400px" height="200px" id="canvas"></canvas>
+  <div>
+    <button id="clear">지우기</button>
+    <button id="save">저장</button>
+  </div>
+</body>
+<script>
+  const ctx = canvas.getContext("2d")
+  let isP = false
+
+  function start() {
+    isP =true
+    ctx.beginPath()
+  }
+  function stop() {
+    isP = false
+  }
+  function move(e) {
+    const x = e.offsetX
+    const y = e.offsetY
+    if(!isP) {
+      ctx.moveTo(x, y)
+    } else {
+      ctx.lineTo(x, y)
+      ctx.stroke()
+    }
+  }
+  save.onclick  = () =>{
+    const a = document.createElement("a")
+    a.href = canvas.toDataURL("image/png")
+    a.download = "image.png"
+    a.click()
+  }
+  clear.onclick = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+  }
+  canvas.addEventListener("mousedown", start)
+  canvas.addEventListener("mouseleave", stop)
+  canvas.addEventListener("mouseup", stop)
+  canvas.addEventListener("mousemove", move)
+</script>
+</html>
