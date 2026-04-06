@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../lib/lib.css">
+  <style>
+    header {height: 100px;background-color: antiquewhite;display: flex;justify-content: center;align-items: center;}
+    ul {display: flex;gap: 20px;}
+    .ham {display: none;}
+    a {display: flex;justify-content: center;align-items: center;}
+    @media (max-width: 768px) {
+      ul { background-color: antiquewhite; display: none;flex-direction: column;position: absolute;top: 100px;width: 300px;} 
+      .ham {display: flex;}
+      #ham:checked ~ ul {display: flex;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <input type="checkbox"  id="ham" hidden>
+    <label class="ham" for="ham">≡</label>
+    <ul>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </ul>
+  </header>
+</body>
+
+</html>

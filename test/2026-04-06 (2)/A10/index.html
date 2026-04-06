@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../lib/lib.css">
+  <style>
+    @keyframes shape {
+      0%, 100% {clip-path: polygon(50% 0, 50% 0, 100% 100%, 100% 100%, 0 100%, 0 100%);}
+      25% {clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%); }
+      50% {clip-path: polygon(50% 0%, 50% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50% ) ;}
+      75% {clip-path: polygon(20% 0, 80% 0, 100% 50%, 80% 100%, 20% 100%, 0% 50%);}
+    }
+
+    .shape {
+      animation: shape 6s infinite;
+      background-color: red;
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body class="center">
+  <div class="shape"></div>
+</body>
+
+</html>
