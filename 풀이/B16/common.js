@@ -1,7 +1,3 @@
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => document.querySelectorAll(selector);
-const createElement = (element, attrs={}) => Object.assign(document.createElement(element), attrs);
-
 const { todos } = await fetch('./todos.json').then( res => res.json() );
 const services = {
     "전체": () => todos,
