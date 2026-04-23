@@ -1,136 +1,40 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>A19 - 카드 스택 애니메이션</title>
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f4f4f6;font-family:sans-serif;gap:60px}
-
-  .scene{
-    width:240px;height:320px;
-    perspective:1000px;
-    position:relative;
-  }
-
-  .card{
-    position:absolute;inset:0;
-    border-radius:22px;
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;font-size:2rem;font-weight:700;
-    backface-visibility:hidden;
-    transition:
-      transform .6s cubic-bezier(.4,0,.2,1),
-      opacity   .6s ease,
-      box-shadow .6s ease;
-    cursor:pointer;
-    user-select:none;
-  }
-
-  /* 하단 받침대 */
-  .card::after{
-    content:'';position:absolute;bottom:-12px;
-    width:75%;height:12px;border-radius:0 0 10px 10px;
-    background:inherit;filter:brightness(.55);
-  }
-
-  /* 번호 표시 바 */
-  .card::before{
-    content:attr(data-num);
-    position:absolute;bottom:18px;
-    font-size:.75rem;font-weight:400;opacity:.7;letter-spacing:.1em;
-  }
-
-  /* 카드 색상 */
-  .c1{background:linear-gradient(150deg,#f97040,#e91e8c)}
-  .c2{background:linear-gradient(150deg,#7f00ff,#e100ff)}
-  .c3{background:linear-gradient(150deg,#11998e,#38ef7d)}
-
-  /* ── 상태 클래스 ── */
-
-  /* active: 앞으로 튀어나옴 */
-  .card.active{
-    transform:translateZ(80px) rotateY(0deg);
-    opacity:1;
-    box-shadow:0 40px 80px rgba(0,0,0,.35);
-    z-index:10;
-  }
-
-  /* prev: 왼쪽 뒤로 */
-  .card.prev{
-    transform:translateZ(-60px) translateX(-40px) rotateY(18deg);
-    opacity:.55;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
-    z-index:5;
-  }
-
-  /* next: 오른쪽 뒤로 */
-  .card.next{
-    transform:translateZ(-60px) translateX(40px) rotateY(-18deg);
-    opacity:.55;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
-    z-index:5;
-  }
-
-  /* 전환 애니메이션 보조: 이동 방향 */
-  .card.slide-out-left {
-    transform:translateZ(-120px) translateX(-100px) rotateY(30deg);
-    opacity:0;transition-duration:.45s;
-  }
-  .card.slide-out-right{
-    transform:translateZ(-120px) translateX(100px) rotateY(-30deg);
-    opacity:0;transition-duration:.45s;
-  }
-
-  /* 버튼 */
-  .btns{display:flex;gap:20px}
-  .btns button{
-    padding:12px 36px;border:none;border-radius:50px;
-    background:#222;color:#fff;font-size:.95rem;cursor:pointer;
-    transition:background .2s,transform .15s;
-    box-shadow:0 4px 16px rgba(0,0,0,.15);
-  }
-  .btns button:hover{background:#444;transform:translateY(-2px)}
-  .btns button:active{transform:translateY(0)}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="scene" id="scene">
-  <div class="card c1" data-num="Card 1">1</div>
-  <div class="card c2" data-num="Card 2">2</div>
-  <div class="card c3" data-num="Card 3">3</div>
-</div>
 
-<div class="btns">
-  <button onclick="move(-1)">이전</button>
-  <button onclick="move(1)">다음</button>
-</div>
+  <input type="radio" id="prev-1" name="first" hidden>
+  <input type="radio" id="next-1" name="first" hidden>
 
-<script>
-  const cards = document.querySelectorAll('.card');
-  const n = cards.length;
-  let cur = 0;
+  <input type="radio" id="prev-2" name="second" hidden>
+  <input type="radio" id="next-2" name="second" hidden>
 
-  function render(dir){
-    cards.forEach((c,i)=>{
-      c.className = c.className.replace(/active|prev|next|slide-out-left|slide-out-right/g,'').trim();
-      const rel = ((i - cur) % n + n) % n;
-      if(rel === 0)       c.classList.add('active');
-      else if(rel === n-1) c.classList.add('prev');
-      else                 c.classList.add('next');
-    });
-  }
+  <input type="radio" id="prev-3" name="three" hidden>
+  <input type="radio" id="next-3" name="three" hidden>
 
-  function move(dir){
-    // 퇴장 효과
-    const outgoing = cards[cur];
-    outgoing.classList.add(dir > 0 ? 'slide-out-left' : 'slide-out-right');
-    cur = (cur + dir + n) % n;
-    setTimeout(()=>render(dir), 60);
-  }
+  <div class="container">
+    <div class="card-1 cards">
+    </div>
 
-  render(0);
-</script>
-</body>
+    <div class="card-2 cards">
+    </div>
+
+    <div class="card-3 cards">
+    </div>
+  </div>
+  
+  <div class="btns">
+    <label for="prev-1">이전</label><label for="next-1">다음</label>
+    <label for="prev-2">이전</label><label for="next-2">다음</label>
+    <label for="prev-3">이전</label><label for="next-3">다음</label>
+  </div>
+
 </html>
