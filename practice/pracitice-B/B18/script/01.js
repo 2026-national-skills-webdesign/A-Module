@@ -2,9 +2,9 @@ const input = $(".fileInput")
 const canvas = $("canvas")
 const ph = $(".placeholder")
 const ctx = canvas.getContext("2d")
-const state = { image: null, rotation: 0, flipH: false, flipV: false, grayscale: false }
+const state = { image: null, rotation: 0, flipH: false, flipV: false, grayscale: false } // 상태 선언
 
-const controls = {
+const controls = { // 컨트롤 선언
   'rotate-left': () => state.rotation -= 90,
   'rotate-right': () => state.rotation += 90,
   'flip-h': () => state.flipH = !state.flipH,
@@ -14,7 +14,7 @@ const controls = {
   'download': () => newEl("a", { href: canvas.toDataURL(), download: 'image.png'}).click()
 }
 
-function render() {
+function render() { // 렌더 함수 (렌더링 담당 함수임)
   const { image, rotation, flipH, flipV, grayscale } = state
 
   const r = ((rotation % 360) + 360) % 360
@@ -25,7 +25,7 @@ function render() {
   canvas.style.display = 'block'
   ph.style.display = 'none'
 
-  ctx.save()
+  ctx.save() // 대충 세이브하는 함수
   ctx.translate(w / 2, h / 2)
   ctx.rotate((r * Math.PI) / 180)
   ctx.scale(flipH ? -1 : 1, flipV ? -1 : 1)
@@ -36,14 +36,14 @@ function render() {
 }
 
 $$(".toolbar button").forEach(btn => 
-  btn.onclick = () => {
+  btn.onclick = () => { // 버튼을 클릭할 때 실행되는 코드들
     if(!state.image) return
     controls[btn.dataset.type]?.()
     render()
   }
 )
 
-input.onchange = () => {
+input.onchange = () => { // input이 바뀔 때마다 실행되는 코드들
   const file = input.files[0]
   const image = new Image()
   image.src = URL.createObjectURL(file)
