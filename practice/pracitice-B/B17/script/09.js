@@ -9,7 +9,7 @@ input.addEventListener("change", (e) => { addFiles(e.target.files); e.target.val
 zone.addEventListener("click", () => { input.click() })
 zone.addEventListener("dragover", (e) => { e.preventDefault(); zone.classList.add("drag-over") })
 zone.addEventListener("dragleave", (e) => { zone.classList.remove("drag-over") })
-zone.addEventListener("drop", (e) => { e.preventDefault(); zone.classList.remove("drag-over") })
+zone.addEventListener("drop", (e) => { e.preventDefault(); zone.classList.remove("drag-over"); addFiles(e.dataTransfet.files)})
 
 function render() {
   list.innerHTML = ""
