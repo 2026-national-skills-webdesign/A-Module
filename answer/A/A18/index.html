@@ -15,8 +15,7 @@
     transition:transform .7s cubic-bezier(.4,0,.2,1);
   }
 
-  /* 마우스 오버 시 X축 회전 */
-  .card:hover .inner{transform:rotateX(180deg)}
+  .card:hover .inner{transform:rotateY(180deg)}
 
   .front, .back{
     position:absolute;inset:0;
@@ -32,13 +31,11 @@
     transform: translateZ(1px);
   }
 
-  /* 뒷면: 뒤집힌 상태에서 글자가 정방향으로 보이게 rotateX(180deg) 유지 */
   .back{
-    transform: rotateX(180deg) translateZ(1px);
+    transform: rotateY(180deg) translateZ(1px);
     font-size:1.5rem; font-weight:800;
   }
 
-  /* 카드별 색상 */
   .c1 .front, .c1 .back { background: linear-gradient(160deg, #f97040, #e91e8c); }
   .c2 .front, .c2 .back { background: linear-gradient(160deg, #43c6ac, #191654); }
   .c3 .front, .c3 .back { background: linear-gradient(160deg, #f7971e, #ffd200); }
@@ -48,13 +45,13 @@
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="card c1"><div class="inner"><div class="front">Card 1</div><div class="back">1</div></div></div>
-  <div class="card c2"><div class="inner"><div class="front">Card 2</div><div class="back">2</div></div></div>
-  <div class="card c3"><div class="inner"><div class="front">Card 3</div><div class="back">3</div></div></div>
-  <div class="card c4"><div class="inner"><div class="front">Card 4</div><div class="back">4</div></div></div>
-  <div class="card c5"><div class="inner"><div class="front">Card 5</div><div class="back">5</div></div></div>
-  <div class="card c6"><div class="inner"><div class="front">Card 6</div><div class="back">6</div></div></div>
-</div>
+  <div class="wrap">
+    <div class="card c1"><div class="inner"><div class="front">Card 1</div><div class="back">1</div></div></div>
+    <div class="card c2"><div class="inner"><div class="front">Card 2</div><div class="back">2</div></div></div>
+    <div class="card c3"><div class="inner"><div class="front">Card 3</div><div class="back">3</div></div></div>
+    <div class="card c4"><div class="inner"><div class="front">Card 4</div><div class="back">4</div></div></div>
+    <div class="card c5"><div class="inner"><div class="front">Card 5</div><div class="back">5</div></div></div>
+    <div class="card c6"><div class="inner"><div class="front">Card 6</div><div class="back">6</div></div></div>
+  </div>
 </body>
 </html>
