@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../lib/lib.css">
+  <style>
+    .scene {perspective: 1000px;perspective-origin: 50% 50%;}
+    .container {transform-style: preserve-3d;animation: spin 18s infinite linear;}
+    @keyframes spin { from {transform: rotateY(0);} to{transform: rotateY(360deg);} }
+    .item {cursor: pointer;width: 210px;height: 130px;border-radius: 2px;position: absolute;transform-style: preserve-3d;margin: -100px 0 0 -140px;}
+    .item:nth-child(1) { transform: rotateY(0deg) translateZ(450px); }
+    .item:nth-child(2) { transform: rotateY(30deg) translateZ(450px); }
+    .item:nth-child(3) { transform: rotateY(60deg) translateZ(450px); }
+    .item:nth-child(4) { transform: rotateY(90deg) translateZ(450px); }
+    .item:nth-child(5) { transform: rotateY(120deg) translateZ(450px); }
+    .item:nth-child(6) { transform: rotateY(150deg) translateZ(450px); }
+    .item:nth-child(7) { transform: rotateY(180deg) translateZ(450px); }
+    .item:nth-child(8) { transform: rotateY(210deg) translateZ(450px); }
+    .item:nth-child(9) { transform: rotateY(240deg) translateZ(450px); }
+    .item:nth-child(10) { transform: rotateY(270deg) translateZ(450px); }
+    .item:nth-child(11) { transform: rotateY(300deg) translateZ(450px); }
+    .item:nth-child(12) { transform: rotateY(330deg) translateZ(450px); }
+    .item img {width: 100%;height: 100%;}
+    .item:after {transition: .3s;content: attr(data-label);position: absolute;display: flex;justify-content: center;align-items: center;inset: 0;opacity: 0;color: white;font-weight: bold;}
+    .item:hover::after {opacity: 1;background: rgba(0,0,0,.35);}
+  </style>
+</head>
+<body class="center">
+  <div class="scene">
+    <div class="container">
+      <div class="item" data-label="image1"><img src="./images/image1.jpg"></div>
+      <div class="item" data-label="image2"><img src="./images/image2.jpg"></div>
+      <div class="item" data-label="image3"><img src="./images/image3.jpg"></div>
+      <div class="item" data-label="image4"><img src="./images/image4.jpg"></div>
+      <div class="item" data-label="image5"><img src="./images/image5.jpg"></div>
+      <div class="item" data-label="image6"><img src="./images/image6.jpg"></div>
+      <div class="item" data-label="image7"><img src="./images/image7.jpg"></div>
+      <div class="item" data-label="image8"><img src="./images/image8.jpg"></div>
+      <div class="item" data-label="image9"><img src="./images/image9.jpg"></div>
+      <div class="item" data-label="image10"><img src="./images/image10.jpg"></div>
+      <div class="item" data-label="image11"><img src="./images/image11.jpg"></div>
+      <div class="item" data-label="image12"><img src="./images/image12.jpg"></div>
+    </div>
+  </div>
+</body>
+</html>
