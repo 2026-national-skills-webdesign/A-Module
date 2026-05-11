@@ -1,0 +1,5 @@
+const canvas = $("canvas")
+const ph = $(".placeholder")
+const input = $(".fileInput")
+const ctx = canvas.getContext("2d")
+const state = { image: null, rotation: 0, flipH: false, flipV: q }
