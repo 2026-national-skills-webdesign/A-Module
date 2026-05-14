@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../lib/lib.css">
+  <style>
+    .scene {transform-style: preserve-3d;width: 280px;height: 360px;}
+    .card {transition: .3s; width: 280px;height: 330px;border-radius: 20px; color: white;box-shadow: 0 0 8px #00000035; display: flex;justify-content: center;align-items: center;position: absolute;}
+     .card:nth-child(1) { background: linear-gradient(135deg, #f97060, #e91e8c) }
+    .card:nth-child(2) { background: linear-gradient(135deg, #6c63ff, #3b82f6) }
+    .card:nth-child(3) { background: linear-gradient(135deg, #4a0060, #7b1fa2) }
+  .btns {display: flex;gap: 20px;}
+  .btns label {display: none;padding: 15px 20px;background: #333;color: white;font-weight: bold;border-radius: 20px;}
+  .btns label:hover {background: #555;}
+  .btns label.dim {cursor: not-allowed;opacity: 0.6;}
+  #c1:checked ~ .scene .card:nth-child(1),
+  #c2:checked ~ .scene .card:nth-child(2),
+  #c3:checked ~ .scene .card:nth-child(3)
+  { transform: translateZ(60px);opacity: 1;z-index: 3; }
+
+  #c1:checked ~ .scene .card:nth-child(2),
+  #c2:checked ~ .scene .card:nth-child(3)
+  { transform: translateZ(0) rotateY(8deg) translateX(30px);z-index: 2;opacity: 0.6; }
+
+  #c1:checked ~ .scene .card:nth-child(3) 
+  { transform: translateZ(-60px) rotateY(14deg) translateX(60px);z-index: 1;opacity: 0.3; }
+
+  #c2:checked ~ .scene .card:nth-child(1),
+  #c3:checked ~ .scene .card:nth-child(1),
+  #c3:checked ~ .scene .card:nth-child(2)
+  {transform: translateX(200%) rotateY(15deg);z-index: 0;opacity: 0;}
+
+  #c1:checked ~ .btns .p1, #c1:checked ~ .btns .n2 {display: flex;}
+  #c2:checked ~ .btns .p2, #c2:checked ~ .btns .n3 {display: flex;}
+  #c3:checked ~ .btns .p3, #c3:checked ~ .btns .n1 {display: flex;}
+
+  </style>
+</head>
+<body class="center">
+  <input type="radio" name="c" id="c1" checked hidden>
+  <input type="radio" name="c" id="c2" hidden>
+  <input type="radio" name="c" id="c3" hidden>
+  <div class="scene">
+    <div class="card">Card 1</div>
+    <div class="card">Card 2</div>
+    <div class="card">Card 3</div>
+  </div>
+  <div class="btns">
+    <label class="p1 dim">이전</label>
+    <label for="c1" class="p2">이전</label>
+    <label for="c2" class="p3">이전</label>
+    <label for="c2" class="n2">다음</label>
+    <label for="c3" class="n3">다음</label>
+    <label class="n1 dim">다음</label>
+  </div>
+</body>
+</html>

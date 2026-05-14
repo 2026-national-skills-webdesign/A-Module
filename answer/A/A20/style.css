@@ -11,7 +11,17 @@ input { display: none; }
 .control-left { bottom: 300px; left: calc(50% - 200px); }
 .control-right { bottom: 300px; right: calc(50% - 200px); }
 
-.p1:checked ~ [for="p5l"], .p1:checked ~ [for="p2r"], .p2:checked ~ [for="p1l"], .p2:checked ~ [for="p3r"], .p3:checked ~ [for="p2l"], .p3:checked ~ [for="p4r"], .p4:checked ~ [for="p3l"], .p4:checked ~ [for="p5r"], .p5:checked ~ [for="p4l"], .p5:checked ~ [for="p1r"] { visibility: visible; }
+.p1:checked ~ [for="p5l"],
+.p1:checked ~ [for="p2r"],
+.p2:checked ~ [for="p1l"],
+.p2:checked ~ [for="p3r"],
+.p3:checked ~ [for="p2l"],
+.p3:checked ~ [for="p4r"],
+.p4:checked ~ [for="p3l"],
+.p4:checked ~ [for="p5r"],
+.p5:checked ~ [for="p4l"],
+.p5:checked ~ [for="p1r"] 
+{ visibility: visible; }
 
 /* Layout - Book */
 #book { width: 1000px; height: 750px; display: flex; position: relative; perspective: 3000px; border: goldenrod solid 30px; }
