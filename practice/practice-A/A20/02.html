@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="../lib/lib.css">
   <style>
     :root { --img-1: url("images/shanghai.jpg"); --img-2: url("images/lyon.jpg"); --img-3: url("images/kazan.jpg"); --img-4: url("images/abu-dhabi.jpg"); --img-5: url("images/sao-paulo.jpg"); }
-    .control {z-index: 1;visibility: hidden;width: 50px;height: 50px;display: flex;justify-content: center;align-items: center;position: absolute;border: 1px solid #fff;background-color: #555;color: white;}
-    .control:active {background-color: #555;}
-    .control-left {bottom: 300px; left: calc(50% - 200px);}
-    .control-right {bottom: 300px; right: calc(50% - 200px);}
 
+    .control {z-index: 1;visibility: hidden; padding: 5px 10px;position: absolute;width: 50px;height: 50px;display: flex;justify-content: center;align-items: center;cursor: pointer;font-size: 20px; background-color: #333;color: white;border: 1px solid #ccc;}
+    .control:active {background-color: #555;}
+    .control-left {bottom: 300px;left: calc(50% - 200px);}
+    .control-right {bottom: 300px;right: calc(50% - 200px);}
+
+    /* 각 체크박스 체크 상태 별 버튼 visibility 변환 */
     .p1:checked ~ [for="p5l"],
     .p1:checked ~ [for="p2r"],
     .p2:checked ~ [for="p1l"],
@@ -20,17 +23,13 @@
     .p4:checked ~ [for="p3l"],
     .p4:checked ~ [for="p5r"],
     .p5:checked ~ [for="p4l"],
-    .p5:checked ~ [for="p1r"]
-    {visibility: visible;} /* 각 체크박스 체크 상태 별 visibility 변환 */
+    .p5:checked ~ [for="p1r"] {visibility: visible;}
 
-    .book {position: relative;width: 1000px;height: 750px;border: 15px solid goldenrod; perspective: 3000px; /* 3d 속성 3000px (적당히 돌아감) */ }
-    .book .page {flex: 1;} /* 각 페이지가 반반씩 위치하개 */
-    .book .sheet {display: grid;animation-duration: 1s; animation-fill-mode: forwards;transform-style: preserve-3d; /* 애니메이션 속성 정의 */
-      position: absolute;left: 50%;width: 50%; /* 중앙에 위치하게, 크기 반만 차지하게 */top: 0;height: 100%;}
-    .book .sheet .page {grid-column: 1;grid-row: 1; /* grid 속성으로 뒷면, 앞면이 같은 위치에 있게 함 (absolute 대용) */
-      width: 100%;height: 100%;
-      backface-visibility: hidden;}
-    .book .sheet .page-2 {transform: rotateY(180deg);} /* page-2: 뒷면 -> 뒷면 미리 회전시켜둠 */
+    .book {position: relative;width: 1000px;height: 750px;display: flex;position: relative;perspective: 3000px; /* 3d 속성 3000px (적당히 돌아감) */ border: goldenrod solid 15px;}
+    .book .page {flex: 1;} /* 각 페이지가 반반씩 위치하게 */
+    .book > .sheet {animation-duration: 1s; animation-fill-mode: forwards; width: 50%;height: 100%;position: absolute;left: 50%;top: 0;transform-origin: 0 50%; transform-style: preserve-3d; /* 애니메이션 속성 정의 */ display: grid;}
+    .book .sheet .page { grid-column: 1; grid-row: 1; /* grid 속성으로 뒷면, 앞면이 같은 위치에 있게 함 (absolute 대용) */ width: 100%;height: 100%; backface-visibility: hidden;}
+    .book > .sheet .page-2 {transform: rotateY(180deg);} /* page-2: 뒷면 -> 뒷면 미리 회전시켜둠 */
     .book .page.left {background-position-x: 0;}
     .book .page.right {background-position-x: 100%;}
 
@@ -40,7 +39,6 @@
     #p3l:checked ~ .book .sheet {animation-name: l3;}
     #p4l:checked ~ .book .sheet {animation-name: l4;}
     #p5l:checked ~ .book .sheet {animation-name: l5;}
-
     #p1r:checked ~ .book .sheet {animation-name: r1;}
     #p2r:checked ~ .book .sheet {animation-name: r2;}
     #p3r:checked ~ .book .sheet {animation-name: r3;}
@@ -49,15 +47,15 @@
 
     /* 책 내 이미지 전환 */
     #p1l:checked ~ .book .page-1 { background-image: var(--img-1); }
-    #p1l:checked ~ .book .page-2 { background-image: var(--img-2); }
-    #p2l:checked ~ .book .page-1 { background-image: var(--img-2); }
-    #p2l:checked ~ .book .page-2 { background-image: var(--img-3); }
-    #p3l:checked ~ .book .page-1 { background-image: var(--img-3); }
-    #p3l:checked ~ .book .page-2 { background-image: var(--img-4); }
-    #p4l:checked ~ .book .page-1 { background-image: var(--img-4); }
-    #p4l:checked ~ .book .page-2 { background-image: var(--img-5); }
-    #p5l:checked ~ .book .page-1 { background-image: var(--img-5); }
-    #p5l:checked ~ .book .page-2 { background-image: var(--img-1); }
+    #p1l:checked ~ .book .page-2 {  background-image: var(--img-2); }
+    #p2l:checked ~ .book .page-1 {  background-image: var(--img-2); }
+    #p2l:checked ~ .book .page-2 {  background-image: var(--img-3); }
+    #p3l:checked ~ .book .page-1 {  background-image: var(--img-3); }
+    #p3l:checked ~ .book .page-2 {  background-image: var(--img-4); }
+    #p4l:checked ~ .book .page-1 {  background-image: var(--img-4); }
+    #p4l:checked ~ .book .page-2 {  background-image: var(--img-5); }
+    #p5l:checked ~ .book .page-1 {  background-image: var(--img-5); }
+    #p5l:checked ~ .book .page-2 {  background-image: var(--img-1); }
 
     #p1r:checked ~ .book .page-1 { background-image: var(--img-5); }
     #p1r:checked ~ .book .page-2 { background-image: var(--img-1); }
@@ -70,31 +68,31 @@
     #p5r:checked ~ .book .page-1 { background-image: var(--img-4); }
     #p5r:checked ~ .book .page-2 { background-image: var(--img-5); }
 
-    @keyframes l1 { from {transform: rotateY(-180deg);} to {transform: rotateY(0);} }
-    @keyframes l2 { from {transform: rotateY(-180deg);} to {transform: rotateY(0);} }
-    @keyframes l3 { from {transform: rotateY(-180deg);} to {transform: rotateY(0);} }
-    @keyframes l4 { from {transform: rotateY(-180deg);} to {transform: rotateY(0);} }
-    @keyframes l5 { from {transform: rotateY(-180deg);} to {transform: rotateY(0);} }
+    @keyframes l1 { from {transform: rotateY(-180deg);} to {transform: rotateY();} }
+    @keyframes l2 { from {transform: rotateY(-180deg);} to {transform: rotateY();} }
+    @keyframes l3 { from {transform: rotateY(-180deg);} to {transform: rotateY();} }
+    @keyframes l4 { from {transform: rotateY(-180deg);} to {transform: rotateY();} }
+    @keyframes l5 { from {transform: rotateY(-180deg);} to {transform: rotateY();} }
 
-    @keyframes r1 { from {transform: rotateY(0deg);} to {transform: rotateY(0);} }
-    @keyframes r2 { from {transform: rotateY(0deg);} to {transform: rotateY(0);} }
-    @keyframes r3 { from {transform: rotateY(0deg);} to {transform: rotateY(0);} }
-    @keyframes r4 { from {transform: rotateY(0deg);} to {transform: rotateY(0);} }
-    @keyframes r5 { from {transform: rotateY(0deg);} to {transform: rotateY(0);} }
+    @keyframes r1 { from {transform: rotateY(0);} to {transform: rotateY(-180deg);} }
+    @keyframes r2 { from {transform: rotateY(0);} to {transform: rotateY(-180deg);} }
+    @keyframes r3 { from {transform: rotateY(0);} to {transform: rotateY(-180deg);} }
+    @keyframes r4 { from {transform: rotateY(0);} to {transform: rotateY(-180deg);} }
+    @keyframes r5 { from {transform: rotateY(0);} to {transform: rotateY(-180deg);} }
   </style>
 </head>
-<body>
-  <input type="radio" name="page" id="p1l" class="p1" hidden>
-  <input type="radio" name="page" id="p2l" class="p2" hidden>
-  <input type="radio" name="page" id="p3l" class="p3" hidden>
-  <input type="radio" name="page" id="p4l" class="p4" hidden>
-  <input type="radio" name="page" id="p5l" class="p5" hidden>
-  
-  <input type="radio" name="page" id="p1r" class="p1" hidden>
-  <input type="radio" name="page" id="p2r" class="p2" hidden>
-  <input type="radio" name="page" id="p3r" class="p3" hidden>
-  <input type="radio" name="page" id="p4r" class="p4" hidden>
-  <input type="radio" name="page" id="p5r" class="p5" hidden>
+<body class="center">
+  <input type="radio" name="page" id="p1l" class="p1 l" hidden checked>
+  <input type="radio" name="page" id="p2l" class="p2 l" hidden>
+  <input type="radio" name="page" id="p3l" class="p3 l" hidden>
+  <input type="radio" name="page" id="p4l" class="p4 l" hidden>
+  <input type="radio" name="page" id="p5l" class="p5 l" hidden>
+
+  <input type="radio" name="page" id="p1r" class="p1 r" hidden>
+  <input type="radio" name="page" id="p2r" class="p2 r" hidden>
+  <input type="radio" name="page" id="p3r" class="p3 r" hidden>
+  <input type="radio" name="page" id="p4r" class="p4 r" hidden>
+  <input type="radio" name="page" id="p5r" class="p5 r" hidden>
 
   <label class="control control-left" for="p1l">&lt;</label>
   <label class="control control-left" for="p2l">&lt;</label>
