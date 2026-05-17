@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../lib/lib.css">
+  <style>
+    .wrap {perspective: 1000px;display: flex;gap: 20px;}
+    .card {transition: .3s; width: 200px;height: 300px;border-radius: 20px;font-weight: bold;color: white;transform-style: preserve-3d;}
+    .front, .back {width: 100%;height: 100%;position: absolute;display: flex;justify-content: center;align-items: center;backface-visibility: hidden;border-radius: 20px;}
+    .back {transform:  rotateY(180deg);}
+    .card:hover { transform: rotateY(180deg); }
+    .c1 .front, .c1 .back {background-color: red;}
+    .c2 .front, .c2 .back {background-color: orange;}
+    .c3 .front, .c3 .back {background-color: greenyellow;}
+    .c4 .front, .c4 .back {background-color: blue;}
+    .c5 .front, .c5 .back {background-color: blueviolet;}
+    .c6 .front, .c6 .back {background-color: pink;}
+  </style>
+</head>
+<body class="center">
+  <div class="wrap">
+    <div class="card c1">
+      <div class="front">1</div>
+      <div class="back">Card 1</div>
+    </div>
+    <div class="card c2">
+      <div class="front">2</div>
+      <div class="back">Card 2</div>
+    </div>
+    <div class="card c3">
+      <div class="front">3</div>
+      <div class="back">Card 3</div>
+    </div>
+    <div class="card c4">
+      <div class="front">4</div>
+      <div class="back">Card 4</div>
+    </div>
+    <div class="card c5">
+      <div class="front">5</div>
+      <div class="back">Card 5</div>
+    </div>
+    <div class="card c6">
+      <div class="front">6</div>
+      <div class="back">Card 6</div>
+    </div>
+  </div>
+</body>
+</html>
