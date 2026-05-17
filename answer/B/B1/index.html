@@ -6,15 +6,19 @@
   <title>B1</title>
   <link rel="stylesheet" href="../lib/lib.css">
   <style>
-    div {display: flex;}
+    div {display: flex;gap: 20px;}
+    .column {flex-direction: column;}
     input:focus {outline: none;}
     input {border-style: solid;}
   </style>
 </head>
 <body class="center">
-  <div>
+  <div class="column">
     <label for="psw">비밀번호</label>
-    <input id="input" type="password">
+    <div>
+      <input id="input" type="password">
+    <p id="p"></p>
+    </div>
   </div>
 </body>
 <script src="../lib/lib.js"></script>

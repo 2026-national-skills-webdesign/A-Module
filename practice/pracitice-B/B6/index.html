@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../lib/lib.css">
   <style>
     .container{display: flex;align-items: center; gap: 50px;}
-    .items, .dragZone {display: flex;justify-content: center;align-items: center; border: 1px solid black; width: 700px;height: 450px; display: grid;grid-template-columns: repeat(3, 1fr);}
+    .items, #dragZone {display: flex;justify-content: center;align-items: center; border: 1px solid black; width: 700px;height: 450px; display: grid;grid-template-columns: repeat(3, 1fr);}
   </style>
 </head>
 <body class="center"> 
@@ -22,12 +22,12 @@
         <li class="item"><img src="./test2.png"></li>
       </ul>
     </div>
-    <div class="dragZone">
-      <p class="p">이미지를 여기에 드래그하세요</p>
+    <div id="dragZone">
+      <p id="p">이미지를 여기에 드래그하세요</p>
     </div>
     <button onclick="location.reload()">초기화</button>
   </div>
 </body>
 <script src="../lib/lib.js"></script>
-<script src="./script/10.js"></script>
+<script src="./script/12.js"></script>
 </html>
