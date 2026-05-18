@@ -1,0 +1,1 @@
+btn.onclick = e => document.body.style.backgroundColor = input.value
